@@ -75,7 +75,7 @@ object SumEntriesOfList {
   /**
    * Test the single functions.
    *
-   * @param args
+   * @param args Arguments
    */
   def main(args: Array[String]): Unit = {
     println(s"sumSum produces: ${SumEntriesOfList.sumSum}")

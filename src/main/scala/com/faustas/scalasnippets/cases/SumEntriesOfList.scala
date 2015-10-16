@@ -46,17 +46,29 @@ object SumEntriesOfList {
   }
 
   /**
+   * Go recursively through the list
+   *
+   * @param values The list of entries.
+   * @return The sum of the entries of the list.
+   */
+  def sumRecursive(values : List[Int]) : Int = {
+    values match {
+      case Nil => 0
+      case l: List[Int] => l.head + sumRecursive(l.tail)
+    }
+  }
+
+  /**
    * Go recursively through the entries of the list and use an inner tailrec function.
    *
    * @return The Integer result.
    */
-  def sumRecursive : Int = {
+  def sumTailRecursive : Int = {
     @annotation.tailrec
     def loop(pos: Int, sum: Int) : Int = {
       if (pos == entries.length) sum
       else loop(pos + 1, sum + entries(pos))
     }
-
     loop(0, 0)
   }
 
@@ -74,6 +86,8 @@ object SumEntriesOfList {
 
     println(s"sumForEach produces: ${SumEntriesOfList.sumForEach}")
 
-    println(s"sumRecursive produces: ${SumEntriesOfList.sumRecursive}")
+    println(s"sumRecursive produces: ${SumEntriesOfList.sumRecursive(entries)}")
+
+    println(s"sumTailRecursive produces: ${SumEntriesOfList.sumTailRecursive}")
   }
 }
